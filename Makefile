@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -O2 -std=c11 -Iinclude
-SRC = src/main.c src/log.c
+SRC = src/main.c src/log.c src/lock.c src/unlock.c
 OUTDIR = build
 OUT = $(OUTDIR)/securefs
 

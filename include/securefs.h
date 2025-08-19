@@ -6,7 +6,12 @@
 
 /* Step 2: Logging API */
 int ensure_logs_dir(char *out_dir, unsigned long cap);
-/* printf-like logger, appends to logs/securefs.log using open/write/close */
 int log_event(const char *fmt, ...);
+
+/* Step 3: Lock API */
+int do_lock_file(const char *path, const unsigned char *key, unsigned long klen);
+
+/* Step 4: Unlock API */
+int do_unlock_file(const char *path, const unsigned char *key, unsigned long klen);
 
 #endif /* SECUREFS_H */
