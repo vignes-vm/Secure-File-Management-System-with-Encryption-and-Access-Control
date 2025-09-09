@@ -14,4 +14,9 @@ int do_lock_file(const char *path, const unsigned char *key, unsigned long klen)
 /* Step 4: Unlock API */
 int do_unlock_file(const char *path, const unsigned char *key, unsigned long klen);
 
+/* Step 5: Metadata API (locked files DB) */
+int meta_add_locked(const char *path);      /* add path to data/locked_files.db */
+int meta_remove_locked(const char *path);   /* remove path from DB */
+int meta_is_locked(const char *path);       /* 1 if locked, 0 if not, -1 on error */
+
 #endif /* SECUREFS_H */

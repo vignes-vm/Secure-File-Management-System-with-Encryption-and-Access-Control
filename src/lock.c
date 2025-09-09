@@ -126,4 +126,12 @@ int do_lock_file(const char *path, const unsigned char *key, unsigned long klen)
 
     log_event("LOCK ok: path='%s'", path);
     return 0;
+
+    /* 7) Add to metadata DB */
+    if (meta_add_locked(path) != 0) {
+        log_event("LOCK warn: meta_add_locked failed for '%s'", path);
+    }
+
+    log_event("LOCK ok: path='%s'", path);
+    return 0;
 }

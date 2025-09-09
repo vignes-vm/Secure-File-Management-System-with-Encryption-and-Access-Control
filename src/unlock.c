@@ -123,6 +123,11 @@ int do_unlock_file(const char *path, const unsigned char *key, unsigned long kle
         /* Continue even if this fails; contents are decrypted. */
     }
 
+    /* 6) Remove from metadata DB */
+    if (meta_remove_locked(path) != 0) {
+        log_event("UNLOCK warn: meta_remove_locked failed for '%s'", path);
+    }
+
     log_event("UNLOCK ok: path='%s'", path);
     return 0;
 }
